@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import StarWarsContext from './StarWarsContext';
 import apiStarWars from '../services/apiStarWars';
+import StarWarsContext from './StarWarsContext';
 
 function StarWarsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
   const [filterByName, setFilterByName] = useState({});
+  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
 
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -19,7 +20,10 @@ function StarWarsProvider({ children }) {
     planets,
     filterByName,
     setFilterByName,
+    filterByNumericValues,
+    setFilterByNumericValues,
   };
+
   return (
     <StarWarsContext.Provider value={ contextType }>
       {children}
